@@ -8,7 +8,7 @@ exports.getAllCampaigns = (req, res, next) => {
         campaign.imageUrl = req.protocol + '://' + req.get('host') + '/images/' + campaign.imageUrl;
         return campaign;
       });
-      res.status(200).json(mappedCampaigns);
+      res.status(200).json(mappedCampaigns);  
     }
   ).catch(
     () => {
