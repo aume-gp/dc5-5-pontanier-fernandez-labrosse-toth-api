@@ -1,4 +1,25 @@
 const uuid = require('uuid/v1');
+const Campaign = require('../models/campaigns');
+
+exports.getAllCampaigns = (req, res, next) => {
+  Campaign.find().then(
+    (campaigns) => {
+      const mappedCampaigns = campaigns.map((campaign) => {
+        campaign.imageUrl = req.protocol + '://' + req.get('host') + '/images/' + campaign.imageUrl;
+        return campaign;
+      });
+      res.status(200).json(mappedCampaigns);
+    }
+  ).catch(
+    () => {
+      res.status(500).send(new Error('Database error!'));
+    }
+  );
+};
+
+/*
+
+const uuid = require('uuid/v1');
 const Product = require('../models/Product');
 
 exports.getAllProducts = (req, res, next) => {
@@ -45,7 +66,7 @@ exports.getOneProduct = (req, res, next) => {
  * }
  * products: [string] <-- array of product _id
  *
- */
+ 
 exports.orderProducts = (req, res, next) => {
   if (!req.body.contact ||
       !req.body.contact.firstName ||
@@ -90,3 +111,5 @@ exports.orderProducts = (req, res, next) => {
     }
   );
 };
+
+*/
