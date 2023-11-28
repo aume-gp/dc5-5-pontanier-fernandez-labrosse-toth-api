@@ -1,4 +1,4 @@
-[
+const campaigns = [
     {
       "id": 1,
       "name": "Campagne de lancement",
@@ -80,4 +80,14 @@
       "budget": 4500
     }
   ]
+  exports.find = () => {
+    return new Promise((resolve, reject) => resolve(JSON.parse(JSON.stringify(campaigns))));
+  }
   
+  exports.findById = (id) => {
+    return new Promise((resolve, reject) =>
+      resolve(JSON.parse(JSON.stringify(campaigns)).find(campaign =>
+        campaign._id == id)
+      )
+    );
+  }
