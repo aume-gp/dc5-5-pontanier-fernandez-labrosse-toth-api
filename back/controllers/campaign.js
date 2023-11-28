@@ -12,3 +12,19 @@ exports.getAllCampaigns = (req, res, next) => {
     }
   );
 };
+
+exports.getOneCampaign = (req, res, next) => {
+  Campaign.findById(req.params.id).then(
+    (campaign) => {
+      if (campaign) {
+        res.status(200).json(campaign);
+      } else {
+        res.status(404).send('Campaign not found');
+      }
+    }
+  ).catch(
+    () => {
+      res.status(500).send(new Error('Database error!'));
+    }
+  );
+};
