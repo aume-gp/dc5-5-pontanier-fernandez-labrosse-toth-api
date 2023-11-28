@@ -44,3 +44,15 @@ exports.createCampaign = (req, res, next) => {
     }
   );
 };
+
+exports.deleteCampaign = (req, res, next) => {
+  Campaign.deleteCampaign(req.params.id).then(
+    () => {
+      res.status(200).send('Campaign deleted');
+    }
+  ).catch(
+    (error) => {
+      res.status(500).send(new Error(error));
+    }
+  );
+};
