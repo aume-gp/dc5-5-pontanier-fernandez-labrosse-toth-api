@@ -99,3 +99,15 @@ exports.addCampaign = (newCampaign) => {
     resolve(newCampaign);
   });
 };
+
+exports.deleteCampaign = (id) => {
+  return new Promise((resolve, reject) => {
+    const index = campaigns.findIndex(c => c.id == id);
+    if (index !== -1) {
+      campaigns.splice(index, 1);
+      resolve();
+    } else {
+      reject('Campaign not found');
+    }
+  });
+};
