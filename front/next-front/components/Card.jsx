@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from 'next/Link';
 
-const Card = ({ campaign, handleEdit, handleDelete }) => {
+const Card = ({ campaign, handleEdit, handleDelete, handleClick }) => {
   return (
     <div className="flex-1 me-4 my-4 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <div className="p-5">
@@ -19,8 +20,9 @@ const Card = ({ campaign, handleEdit, handleDelete }) => {
 
         <p>Du {campaign.start_date} au {campaign.end_date}</p>
         <span>Budget : {campaign.budget}</span>
-        {/* <a
-          href="#"
+        <Link
+          href={`/campaigns/${campaign.id}`}
+          data = {campaign}
           className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
           Voir le projet
@@ -39,7 +41,7 @@ const Card = ({ campaign, handleEdit, handleDelete }) => {
               d="M1 5h12m0 0L9 1m4 4L9 9"
             />
           </svg>
-        </a> */}
+        </Link>
 
         <div className="mt-5 flex-center gap-4 border-t border-gray-100 pt-3">
           <p

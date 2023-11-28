@@ -1,11 +1,15 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Card from '@components/Card'
-import Link from 'next/Link'
+import Card from "@components/Card";
+import Link from "next/Link";
 
 const Feed = () => {
   const [allCampaigns, SetAllCampaigns] = useState([]);
+
+//   const handleCLick = () => {
+
+//   };
 
   const FetchCampaigns = async () => {
     try {
@@ -33,11 +37,12 @@ const Feed = () => {
 
           <div className="flex flex-wrap">
             {allCampaigns.map((campaign) => (
-        <Card
-          key={campaign.id}
-          campaign={campaign}
-        />
-      ))}
+              <Card
+                key={campaign.id}
+                campaign={campaign}
+                // handleClick={handleCLick}
+              />
+            ))}
           </div>
         </div>
       </section>
