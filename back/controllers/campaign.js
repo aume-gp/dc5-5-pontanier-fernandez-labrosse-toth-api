@@ -28,3 +28,19 @@ exports.getOneCampaign = (req, res, next) => {
     }
   );
 };
+
+exports.createCampaign = (req, res, next) => {
+  const newCampaign = {
+    id: Date.now(),
+    ...req.body
+  };
+  Campaign.addCampaign(newCampaign).then(
+    (createdCampaign) => {
+      res.status(201).json(createdCampaign);
+    }
+  ).catch(
+    () => {
+      res.status(500).send(new Error('Error creating campaign'));
+    }
+  );
+};
