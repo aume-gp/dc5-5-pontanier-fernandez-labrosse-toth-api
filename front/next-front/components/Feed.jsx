@@ -1,8 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Card from '@components/Card'
+import Link from 'next/Link'
 
-const Feed = ({ data }) => {
+const Feed = () => {
   const [allCampaigns, SetAllCampaigns] = useState([]);
 
   const FetchCampaigns = async () => {
@@ -24,18 +26,18 @@ const Feed = ({ data }) => {
     <>
       <section className="w-full flex justify-center">
         <div className="container">
-          <div className="titles">
-            <h1>Nos produits</h1>
-            <h2>Une gamme d'articles exclusifs</h2>
+          <div className="titles flex justify-between">
+            <h1>Nos Campagnes</h1>
+            <Link href="/">Créer une campagne</Link>
           </div>
 
           <div className="flex flex-wrap">
-            {/* {data.map((campaigns) => (
+            {allCampaigns.map((campaign) => (
         <Card
-          key={campaigns._id}
-          campaign={campaigns}
+          key={campaign.id}
+          campaign={campaign}
         />
-      ))} */}
+      ))}
           </div>
         </div>
       </section>

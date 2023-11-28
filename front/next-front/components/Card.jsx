@@ -3,15 +3,9 @@
 import { useState } from "react";
 import Image from "next/image";
 
-const Card = ({
-  campaign,
-  handleEdit,
-  handleDelete,
-}) => {
-
+const Card = ({ campaign, handleEdit, handleDelete }) => {
   return (
-    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-      
+    <div className="flex-1 me-4 my-4 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <div className="p-5">
         <a href="#">
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -22,7 +16,9 @@ const Card = ({
           {" "}
           {campaign.description}
         </p>
-        
+
+        <p>Du {campaign.start_date} au {campaign.end_date}</p>
+        <span>Budget : {campaign.budget}</span>
         {/* <a
           href="#"
           className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -44,22 +40,21 @@ const Card = ({
             />
           </svg>
         </a> */}
-        
+
         <div className="mt-5 flex-center gap-4 border-t border-gray-100 pt-3">
-        <p
+          <p
             className="font-inter text-sm green_gradient cursor-pointer"
             onClick={handleEdit}
-        >
+          >
             Modifier
-        </p>
-        <p
+          </p>
+          <p
             className="font-inter text-sm orange_gradient cursor-pointer"
             onClick={handleDelete}
-        >
+          >
             Supprimer
-        </p>
+          </p>
         </div>
-       
       </div>
     </div>
   );
