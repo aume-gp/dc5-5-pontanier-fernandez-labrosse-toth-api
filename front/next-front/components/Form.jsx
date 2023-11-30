@@ -103,7 +103,7 @@ const Form = ({
               </button>
               {handleDelete ? (
                 <button
-                  onclick={handleDelete}
+                  onClick={handleDelete}
                   type="delete"
                   className="px-5 py-1.5 text-sm bg-primary-orange rounded-full text-white"
                 >

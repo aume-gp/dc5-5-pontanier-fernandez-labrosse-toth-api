@@ -10,20 +10,22 @@ const UpdateCampaign = () => {
   const searchParams = useSearchParams();
   const campaignId = searchParams.get("id");
 
-   console.log(campaignId);
+  console.log(campaignId);
 
   const [campaignData, setCampaignData] = useState({
     name: "",
     description: "",
     start_date: "",
     end_date: "",
-    budget:"",
+    budget: "",
   });
   const [submitting, setIsSubmitting] = useState(false);
 
   const getCampaignDetails = async () => {
     try {
-      const response = await fetch(`http://localhost:3001/api/campaigns/${campaignId}`);
+      const response = await fetch(
+        `http://localhost:3001/api/campaigns/${campaignId}`
+      );
       const data = await response.json();
       console.log(data);
       setCampaignData({
@@ -49,16 +51,19 @@ const UpdateCampaign = () => {
     if (!campaignId) return alert("Missing CampaignId!");
 
     try {
-      const response = await fetch(`http://localhost:3001/api/campaigns/${campaignId}`, {
-        method: "PATCH",
-        body: JSON.stringify({
+      const response = await fetch(
+        `http://localhost:3001/api/campaigns/${campaignId}`,
+        {
+          method: "PATCH",
+          body: JSON.stringify({
             name: data.name,
             description: data.description,
             start_date: data.start_date,
             end_date: data.end_date,
             budget: data.budget,
-        }),
-      });
+          }),
+        }
+      );
 
       if (response.ok) {
         router.push("/");
@@ -72,8 +77,6 @@ const UpdateCampaign = () => {
     }
   };
 
-  
-
   const DeleteCampaign = async (campaign) => {
     const hasConfirmed = confirm(
       "Are you sure you want to delete this campaign?"
@@ -81,10 +84,11 @@ const UpdateCampaign = () => {
 
     if (hasConfirmed) {
       try {
-        await fetch(`http://localhost:3001/api/campaigns/${campaign.id.toString()}`, {
+        await fetch(`http://localhost:3001/api/campaigns/${campaignId}`, {
           method: "DELETE",
         });
-
+        console.log("campagne supprimée");
+        router.push("/");
       } catch (error) {
         console.log(error);
       }
@@ -96,9 +100,9 @@ const UpdateCampaign = () => {
       type="Edit"
       campaign={campaignData}
       submitting={submitting}
-      setCampaign = {setCampaignData}
+      setCampaign={setCampaignData}
       handleSubmit={UpdateCampaign}
-      handleDelete = {DeleteCampaign}
+      handleDelete={DeleteCampaign}
     />
   );
 };

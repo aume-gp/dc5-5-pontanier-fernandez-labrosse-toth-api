@@ -21,9 +21,10 @@ const Card = ({ campaign }) => {
 
     if (hasConfirmed) {
       try {
-        await fetch(`/api/campaign/${campaign.id.toString()}`, {
+        await fetch(`http://localhost:3001/api/campaigns/${campaign.id.toString()}`, {
           method: "DELETE",
         });
+        console.log('campagne supprimée');
       } catch (error) {
         console.log(error);
       }

@@ -20,7 +20,7 @@ const CreateCampaign = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch(`/api/campaigns`, {
+      const response = await fetch(`http://localhost:3001/api/campaigns`, {
         method: "POST",
         body: JSON.stringify({
             name: campaignData.name,
