@@ -30,7 +30,7 @@ const Form = ({
 
             <label>
               <span className="font-satoshi font-semibold text-base text-gray-700">
-                Votre Campaign
+                Votre Campagne
               </span>
             </label>
             <textarea
@@ -38,9 +38,8 @@ const Form = ({
               onChange={(e) =>
                 setCampaign({ ...campaign, description: e.target.value })
               }
-              placeholder="Description du projet"
               required
-              className="form_textarea"
+              className=""
             />
 
             <label>
@@ -54,9 +53,8 @@ const Form = ({
               onChange={(e) =>
                 setCampaign({ ...campaign, start_date: e.target.value })
               }
-              placeholder="Description du projet"
               required
-              className="form_textarea"
+              className=""
             />
             <label>
               <span className="font-satoshi font-semibold text-base text-gray-700">
@@ -69,9 +67,8 @@ const Form = ({
               onChange={(e) =>
                 setCampaign({ ...campaign, end_date: e.target.value })
               }
-              placeholder="Description du projet"
               required
-              className="form_textarea"
+              className=""
             />
             <label>
               <span className="font-satoshi font-semibold text-base text-gray-700">
@@ -84,9 +81,8 @@ const Form = ({
               onChange={(e) =>
                 setCampaign({ ...campaign, budget: e.target.value })
               }
-              placeholder="Description du projet"
               required
-              className="form_textarea"
+              className=""
             />
 
             <div className="flex-end mx-3 mb-5 gap-4">
